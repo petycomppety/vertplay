@@ -14,9 +14,9 @@ def insert_wallet(pubkey,privkey):
  
         if conn.is_connected():
             print('connection established.')
-	    cursor = conn.cursor()
+	        cursor = conn.cursor()
     	    cursor.execute(query, args)
-	    conn.commit()
+	        conn.commit()
 
         else:
             print('connection failed.')

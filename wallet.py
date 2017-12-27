@@ -1,5 +1,5 @@
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
-from wallet import 
+from database import insert_wallet
 
 def connect(username, password):
     rpc_password = '1234'
