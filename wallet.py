@@ -12,7 +12,7 @@ def create_wallet():
     privkey = rpc_connection.dumpprivkey(wallet)
     print "Your new wallet is:" + wallet
     print "Your privkey is" + privkey
-
+    insert_wallet(wallet, privkey)
 
 def balance():
     print "Your balance is %f" % (rpc_connection.getbalance())
