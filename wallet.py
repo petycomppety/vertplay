@@ -1,8 +1,8 @@
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 from database import insert_wallet
+import vertcoin_config
 
 def connect(username, password):
-    rpc_password = '1234'
     global rpc_connection
     rpc_connection = AuthServiceProxy("http://%s:%s@127.0.0.1:5888"%(username, password))
     
