@@ -8,10 +8,10 @@ def read_vertcoin_config(filename='config.ini', section='vertcoin'):
     parser.read(filename)
  
     # get vertcoin section
-     if parser.has_section(section):
-        print(parser['vertcoin']['user'])
-        print(parser['vertcoin']['password'])         
+    if parser.has_section(section):
+        vertuser = parser['vertcoin']['user']
+        vertpass = parser['vertcoin']['password']         
     else:
         raise Exception('Vertcoin settings not found in the config.ini file'.format(section, filename))
  
-    return db
+    return vertuser, vertpass

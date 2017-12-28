@@ -2,8 +2,9 @@ from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 from database import insert_wallet
 import vertcoin_config
 
-def connect(username, password):
+def connect():
     global rpc_connection
+    username, password = vertcoin_config.read_vertcoin_config()
     rpc_connection = AuthServiceProxy("http://%s:%s@127.0.0.1:5888"%(username, password))
     
 
@@ -20,7 +21,7 @@ def balance():
 
 
 def main():
-    connect('cheppers','1234')
+    connect()
     create_wallet()
  
 if __name__ == '__main__':
