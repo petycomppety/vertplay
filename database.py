@@ -33,16 +33,16 @@ def insert_wallet(pubkey,privkey):
 def read_wallets():
     query = "SELECT * from vertcoin_wallet"
     try:
-	    db_config = read_db_config()
-        conn = MySQLConnection(**db_config)
-        if conn.is_connected():
-            print('connection established.')
-	        cursor.execute(query)
-            for (pubkey, privkey) in cursor:
-                print("Pubkey: {} Privkey: {}".format(pubkey, privkey))
-        else:
+	db_config = read_db_config()
+	conn = MySQLConnection(**db_config)
+    	if conn.is_connected():
+    	    print('connection established.')
+	    cursor = conn.cursor()
+	    cursor.execute(query)
+    	    for row in cursor:
+    	        print(row[0], row[1])
+    	else:
             print('connection failed.')
- 
     except Error as error:
         print(error)
  
