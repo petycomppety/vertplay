@@ -38,9 +38,8 @@ def read_wallets():
         if conn.is_connected():
             print('connection established.')
 	        cursor.execute(query)
-	        numrows = cursor.rowcount
-            for x in xrange(0,numrows)
-                print cursor.fetchone()
+            for (pubkey, privkey) in cursor:
+                print("Pubkey: {} Privkey: {}".format(pubkey, privkey))
         else:
             print('connection failed.')
  
