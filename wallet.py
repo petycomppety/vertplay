@@ -15,7 +15,7 @@ def create_wallet():
     print "Your privkey is" + privkey
     insert_wallet(wallet, privkey)
 
-def balance():
+def balance(address):
     print "Your balance is %f" % (rpc_connection.getbalance())
     print "Your other balance is %f" % (rpc_connection.getreceivedbyaddress("VrR8YGqcGVt4F9ZKPYKBpiAviLfgoByr49"))
 

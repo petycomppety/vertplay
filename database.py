@@ -2,12 +2,7 @@ from mysql.connector import MySQLConnection, Error
 from mysql_dbconfig import read_db_config
  
  
-def insert_wallet(pubkey,privkey):
-    """ Connect to MySQL database """
-    query = "INSERT INTO vertcoin_wallet(pubkey,privkey) " \
-            "VALUES(%s,%s)" 
-    args = (pubkey, privkey)
-
+def mysql_connect(query, args):
     try:
 	db_config = read_db_config()
         conn = MySQLConnection(**db_config)
@@ -27,7 +22,15 @@ def insert_wallet(pubkey,privkey):
     finally:
         conn.close()
         print('Connection closed.')
- 
- 
-if __name__ == '__main__':
-    connect()
+
+def insert_wallet(pubkey,privkey):
+    """ Connect to MySQL database """
+    query = "INSERT INTO vertcoin_wallet(pubkey,privkey) " \
+            "VALUES(%s,%s)" 
+    args = (pubkey, privkey)
+    mysql_connect(query, args)
+
+   
+def read_wallets():
+    query = "SELECT * from vertcoin_wallet"
+    
